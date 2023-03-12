@@ -53,3 +53,8 @@ public class chain {
         }
     }
 }
+
+
+/* TODO:
+    [] implement a hash function
+ */
