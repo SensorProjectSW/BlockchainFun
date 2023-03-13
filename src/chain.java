@@ -48,13 +48,8 @@ public class chain {
     public void getAllData() {
         block temp = genesis;
         while (temp != null) {
-            System.out.println("Data from block " + temp.getOwn_ID() + ": " + temp.getData() + "   | Timestamp: " + temp.getTime());
+            System.out.println("Data from block " + temp.getOwn_ID() + ": " + temp.getData());
             temp = temp.getNext_block();
         }
     }
 }
-
-
-/* TODO:
-    [] implement a hash function
- */

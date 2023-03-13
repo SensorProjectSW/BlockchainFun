@@ -4,13 +4,6 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Random;
 
 public class HashFrontZero {
-    public static void main(String[] args) throws NoSuchAlgorithmException {
-        System.out.println(hash("Hallo"));
-        System.out.println();
-        System.out.println(AddRandInt("Hallo"));
-        System.out.println(hash(AddRandInt("Hallo")));
-    }
-
     public static String hash(String s) throws NoSuchAlgorithmException {
         // getInstance() method is called with algorithm SHA-512
         MessageDigest md = MessageDigest.getInstance("SHA-512");
@@ -31,12 +24,22 @@ public class HashFrontZero {
         return hash;
     }
 
-    public static String AddRandInt(String s) throws NoSuchAlgorithmException {
+    private static String difficulty(int i) {
+        String s = "" + 0;
+        for (int j = 0; j < i-1; j++) {
+            s += 0;
+        }
+        return s;
+    }
+
+
+    public static String AddRandInt(String s, int i) throws NoSuchAlgorithmException {
         int min = 0, max = Integer.MAX_VALUE-1;
         Random rand = new Random();
+        String diff = difficulty(i);
         while (true) {
             int randnum = rand.nextInt((max - min) +1 ) + min;
-            if (hash(s+randnum).charAt(0) == '0') {
+            if (hash(s+randnum).substring(0,i).equals(diff)) {
                 s += randnum;
                 break;
             }
